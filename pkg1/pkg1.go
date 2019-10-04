@@ -13,6 +13,7 @@ func Hello() {
 
 func hello() {
 	fmt.Println("can not call main")
+	fmt.Println("call from pkg1 caller")
 }
 
 func PrintFoo(f Foo) {
