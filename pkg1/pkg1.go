@@ -1,6 +1,7 @@
 package pkg1
 
 import (
+	"awesomeProject/pkg1/internal/pkg3"
 	"awesomeProject/pkg2"
 	"fmt"
 )
@@ -21,6 +22,7 @@ type Foo struct {
 func Hello() {
 	fmt.Println("Hello pkg1")
 	pkg2.Hello()
+	pkg3.Hello()
 }
 
 func hello() {
