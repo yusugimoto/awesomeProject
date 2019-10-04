@@ -5,6 +5,14 @@ import (
 	"fmt"
 )
 
+func init() {
+	fmt.Println("pkg1 init1")
+}
+
+func init() {
+	fmt.Println("pkg1 init2")
+}
+
 type Foo struct {
 	Name string
 	name string
