@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"awesomeProject/pkg1"
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Hello, world!")
+	pkg1.hello()
 }
