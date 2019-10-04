@@ -7,5 +7,5 @@ import (
 
 func main() {
 	fmt.Println("Hello, world!")
-	pkg1.hello()
+	pkg1.Hello()
 }
