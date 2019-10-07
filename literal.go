@@ -3,9 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	f := func(i, j int) int {
-		return i + j
+	n := 10
+	f := func() {
+		n = n + 5
 	}
-	n := f(1 ,1)
+	f()
 	fmt.Println(n)
 }
