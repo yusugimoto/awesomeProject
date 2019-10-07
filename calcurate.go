@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"html"
+	"math/big"
 	"net/http"
-	"strconv" //文字列と基本データ型の双方向変換ライブラリ
 )
 
 type Server struct{}
@@ -14,21 +14,25 @@ func (Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	right := r.FormValue("right")
 	op := r.FormValue("op")
 
-	leftInt, leftErr := strconv.Atoi(left)
-	rightInt, rightErr := strconv.Atoi(right)
+	leftInt := &big.Int{} // var leftInt *Big = &big.Int{}
+	rightInt := &big.Int{}
+	_, leftOK := leftInt.SetString(left, 10)
+	_, rightOK := rightInt.SetString(right, 10)
 
 	var result string
-	if (leftErr == nil) && (rightErr == nil) {
+	if leftOK && rightOK {
+		resultInt := &big.Int{}
 		switch op {
 		case "add":
-			result = strconv.Itoa(leftInt + rightInt)
+			resultInt.Add(leftInt, rightInt)
 		case "sub":
-			result = strconv.Itoa(leftInt - rightInt)
+			resultInt.Sub(leftInt, rightInt)
 		case "multi":
-			result = strconv.Itoa(leftInt * rightInt)
+			resultInt.Mul(leftInt, rightInt)
 		case "div":
-			result = strconv.Itoa(leftInt / rightInt)
+			resultInt.Div(leftInt, rightInt)
 		}
+		result = resultInt.String() // 明示的に型を変換
 	}
 
 	h := `
