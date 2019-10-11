@@ -10,4 +10,3 @@ func main() {
 	fmt.Println("slice: ", slice)
 	fmt.Println("slice2: ", slice2)
 }
-`
